@@ -1,0 +1,50 @@
+{
+    "id": "lumiria.data.styler",
+    "name": "DataStyler",
+    "description": "Formats the JSON data based on a set of simply styling rules.",
+    "version": "0.4.0.0",
+    "modules": [
+        "modules\\json.py",
+        "modules\\xml.py"
+    ],
+    
+    	
+	"activation": {
+		"timing": "onCommand",
+		"parameter": "format.data"
+	},
+
+    
+    "contributes": {
+        "gestures": [
+            {
+                "key": "ctrl+shift+f",
+                "command": "format.data"
+            }
+        ],
+        "commands": [
+            {
+                "id": "format.data",
+                "name": "Formats Data",
+                "category": "DataStyler",
+                "description": "Formats the JSON data.",
+                "script": "scripts/styler.py"
+            }
+        ],
+        "configuration": {
+            "properties": {
+                "data_styler.indent": {
+                    "type": "number",
+                    "default": 4,
+                    "description": "Number of spaces to indent."
+                },
+                "data_styler.float_ndigits": {
+                	"type": "number",
+                	"nullable": true,
+                	"default": null,
+                	"description": "The number of decimal places to round to."
+               	}
+            }
+        }
+    }
+}
