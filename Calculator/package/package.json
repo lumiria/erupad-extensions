@@ -1,0 +1,24 @@
+{
+    "id": "lumiria.calculator",
+    "name": "Calculator",
+    "description": "Automatically assists in inputting answers to calculation formulas.",
+    "version": "0.4.0.0",
+    "main": "main.py",
+    "modules": [
+        "modules\\calc.py"
+    ],
+
+    "contributes": {
+        "configuration": {
+            "properties": {
+                "calculator.target_filetypes": {
+                    "elements": {
+                        "type": "string"
+                    },
+                    "default": [],
+                    "description": "List of file types for which automatic calculation is enabled."
+                }
+            }
+        }
+    }
+}
