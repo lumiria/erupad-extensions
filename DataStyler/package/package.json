@@ -2,7 +2,7 @@
     "id": "lumiria.data.styler",
     "name": "DataStyler",
     "description": "Formats the JSON data based on a set of simply styling rules.",
-    "version": "0.4.0.0",
+    "version": "0.5.0.0",
     "modules": [
         "modules\\json.py",
         "modules\\xml.py"
@@ -43,7 +43,12 @@
                 	"nullable": true,
                 	"default": null,
                 	"description": "The number of decimal places to round to."
-               	}
+               	},
+                "data_styler.allow_escaped_json_string": {
+                	"type": "boolean",
+                    "default": true,
+                    "description": "Allow escaped JSON string formatting."
+                }
             }
         }
     }

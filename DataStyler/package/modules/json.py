@@ -18,11 +18,15 @@ def format(text, settings):
 	try:
 		indent = settings.data_styler.indent or 2
 		float_ndigits = settings.data_styler.float_ndigits
+
+		if settings.data_styler.allow_escaped_json_string:
+			text = text.encode('raw_unicode_escape').decode('unicode-escape')
 		
 		if float_ndigits:
 			encoder.FLOAT_REPR = lambda o: f'{o:.{int(float_ndigits)}f}'
 		decoder = json.JSONDecoder(
-			object_pairs_hook=collections.OrderedDict)
+			object_pairs_hook=collections.OrderedDict,
+			strict=False)
 		data = decoder.decode(text)
 		
 		return json.dumps(data, indent=int(indent), ensure_ascii=False)
