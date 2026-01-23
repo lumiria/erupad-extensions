@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import decimal
+import re
 
 
 class Calculator:
@@ -11,6 +12,7 @@ class Calculator:
         self.__reverse = reverse
         self.__length = len(self.__formula)
         self.__stack = []
+        self.__has_comma = False
 
     def get_evaluated_formula(self):
         if not self.__reverse:
@@ -26,7 +28,7 @@ class Calculator:
         val, _ = self.__expr(0)
         if not self.__reverse:
             print('Caclulator | formula:', self.__formula, ' = ', val)
-        return val
+        return f'{val:,}' if self.__has_comma else val
 
     def __expr(self, i):
         return self.__expr_term_core(i, self.__term, ['+', '-'])
@@ -86,12 +88,16 @@ class Calculator:
         return (val, i+1)
 
     def __number(self, i):
-        def isdigit(c):
-            return c.isdigit() or (not isdicimals and c == '.')
-
-        head = i
         isdicimals = False
 
+        def isdigit(c):
+            return c.isdigit() or (not isdicimals and c == '.') or c == ','
+
+        def is_valid_number_with_comma(s):
+            pattern = r'^(\d{1,3}(,\d{3})+|\d+)(\.\d+)?$'
+            return re.match(pattern, s) is not None
+
+        head = i
         while i < self.__length and isdigit(self.__get_at(i)) or head == i:
             chr = self.__get_at(i)
             if chr == '.':
@@ -100,6 +106,10 @@ class Calculator:
             self.__stack.append(chr)
 
         number = self.__get_range(head, i)
+        if is_valid_number_with_comma(number) and not self.__has_comma:
+            self.__has_comma = ',' in number
+        number = number.replace(',', '')
+
         return (decimal.Decimal(number), i)
 
     def __calc(self, val1, val2, op):
