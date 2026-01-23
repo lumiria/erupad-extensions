@@ -2,17 +2,19 @@
 import_as("modules.calc", "calc")
 
 
-def is_trigger_key(key):
-    return key == "="
-
-
 def get_text(_):
     (line_text, caret_pos) = notepad.editor.get_current_line_text_with_caret_pos()
     return line_text[0: caret_pos - 1]
 
 
+def is_trigger_key(key):
+    if key == '=':
+        return True
+    return get_text(None).rstrip().endswith('=') if key == ' ' else False
+
+
 def get_calculation_formula(text):
-    return calc.get_formula(text)
+    return calc.get_formula([p for p in text.rstrip().split('=') if p][-1].rstrip())
 
 
 def create_calculator(formula):
