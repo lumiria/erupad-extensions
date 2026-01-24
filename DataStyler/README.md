@@ -34,7 +34,10 @@ Installing DataStyler adds the following features to EruPad:
 
 ### Settings
 
-| Key | Description |
-----|---- 
-| data_styler.indent | Number of spaces for indentation after formatting |
-| data_styler.float_ndigits | Number of decimal places to round to when formatting |
+| Key | Description | Default
+----|----|---- 
+| data_styler.indent | Number of spaces for indentation after formatting | 4 |
+| data_styler.float_ndigits | Number of decimal places to round to when formatting | null |
+| data_Styler.llow_escaped_json_stringa | Allow formatting of escaped JSON strings | true |
+| data_styler.accept_decimal_string | Accept strings represented as the Decimal type | true |
+| data_styler.allow_single_quotes | Allow strings enclosed in single quotes | true | true |
