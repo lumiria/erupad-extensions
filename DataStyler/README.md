@@ -7,7 +7,7 @@ DataStyler is an extension for the EruPad notepad app that simplifies and beauti
 
 ## Installation
 
-1. Download the extension archive file from [here](https://github.com/lumiria/erupad-extensions/releases/tag/DataStyler_v.0.4).
+1. Download the extension archive file (*package.zip) from [here](https://github.com/lumiria/erupad-extensions/releases/tag/v0.6).
 
 2. Extract the downloaded file to a location of your choice.
 
