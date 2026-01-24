@@ -6,7 +6,7 @@ The Calculator is an extension for the EruPad notepad application that assists w
 
 ## Installation
 
-1. Download the extension archive file from [here](https://github.com/lumiria/erupad-extensions/releases/tag/Calculator_v0.4).
+1. Download the extension archive file (*package.zip) from [here](https://github.com/lumiria/erupad-extensions/releases/tag/v0.6).
 
 2. Extract the downloaded file to a location of your choice.
 
